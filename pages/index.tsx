@@ -3,9 +3,21 @@ import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from '../styles/Home.module.css'
 
+import { getSortedPostsData } from '../lib/posts';
+import Link from 'next/link';
+import { GetStaticProps } from 'next';
+
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
+export default function Home({
+  allPostsData
+}: {
+  allPostsData: {
+    date: string
+    title: string
+    id: string
+  }[]
+}) {
   return (
     <>
       <Head>
@@ -15,6 +27,16 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
+        {allPostsData.map(({ id, date, title }:any) => (
+          <li key={id}>
+            <Link href={`/posts/${id}`}> {title}</Link>
+            
+            <br />
+            {id}
+            <br />
+            {date}
+          </li>
+        ))}
         <div className={styles.description}>
           <p>
             Get started by editing&nbsp;
@@ -120,4 +142,13 @@ export default function Home() {
       </main>
     </>
   )
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  const allPostsData = getSortedPostsData();
+  return {
+    props: {
+      allPostsData,
+    },
+  };
 }
