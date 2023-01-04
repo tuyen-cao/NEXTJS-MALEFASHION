@@ -12,6 +12,7 @@ const Home = () => {
       
         <main>
             Home page
+            aaaaaa
           
         </main>
     </Layout>
