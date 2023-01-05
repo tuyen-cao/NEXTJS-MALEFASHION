@@ -30,6 +30,7 @@
             content: '\f105';
             font-family: "FontAwesome";
         }
+       
         span {
             color: $heading-color;
         }
@@ -39,6 +40,11 @@
         font-size: 15px;
         color:$color-13;
         display: inline-block;
+    }
+}
+.breadcrumb-item {
+    &:before {
+        display: none;
     }
 }
 

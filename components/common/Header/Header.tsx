@@ -6,6 +6,7 @@ import { addToCart, selectedProducts } from "reducers/productsReducer";
 import { useDispatch } from "react-redux";
 import { BasketItem } from "models/types"; */
 import Link from "next/link";
+import Image from "next/image";
 
 
 const Header: React.FC = () => {
@@ -28,8 +29,8 @@ const Header: React.FC = () => {
           <div className="offcanvas-menu-wrapper">
               <div className="offcanvas__option">
                   <div className="offcanvas__links">
-                      <a href="#">Sign in</a>
-                      <a href="#">FAQs</a>
+                      <Link href="#">Sign in</Link>
+                      <Link href="#">FAQs</Link>
                   </div>
                   <div className="offcanvas__top__hover">
                       <span>
@@ -43,9 +44,9 @@ const Header: React.FC = () => {
               </div>
               <div className="offcanvas__nav__option">
                  {/*  <SearchSwitch /> */}
-                  <a href="#">
-                      <img src="/img/icon/heart.png" alt="" />
-                  </a>
+                  <Link href="#">
+                      <Image width={18} height={16} src="/img/icon/heart.png" alt="" />
+                  </Link>
                  {/*  <ShoppingCartLink /> */}
               </div>
               <div id="mobile-menu-wrap" />
@@ -67,8 +68,8 @@ const Header: React.FC = () => {
                           <div className="col-lg-6 col-md-5">
                               <div className="header-top__right">
                                   <div className="header-top__links">
-                                      <a href="#">Sign in</a>
-                                      <a href="#">FAQs</a>
+                                      <Link href="#">Sign in</Link>
+                                      <Link href="#">FAQs</Link>
                                   </div>
                                   <div className="header-top__hover">
                                       <span>
@@ -88,9 +89,9 @@ const Header: React.FC = () => {
                   <div className="row">
                       <div className="col-lg-3 col-md-3">
                           <div className="header__logo">
-                              <a href="./index.html">
-                                  <img src="/img/logo.png" alt="" />
-                              </a>
+                              <Link href="./">
+                                  <Image width={196} height={23} src="/img/logo.png" alt="" />
+                              </Link>
                           </div>
                       </div>
                       <div className="col-lg-6 col-md-6">
@@ -103,30 +104,30 @@ const Header: React.FC = () => {
                                       <Link href="shop">Shop</Link>
                                   </li>
                                   <li>
-                                      <a href="#">Pages</a>
+                                      <Link href="#">Pages</Link>
                                       <ul className="dropdown">
                                           <li>
-                                              <a href="./about.html">About Us</a>
+                                              <Link href="./about.html">About Us</Link>
                                           </li>
                                           <li>
-                                              <a href="./shop-details.html">Shop Details</a>
+                                              <Link href="./shop-details.html">Shop Details</Link>
                                           </li>
                                           <li>
-                                              <a href="./shopping-cart.html">Shopping Cart</a>
+                                              <Link href="./shopping-cart.html">Shopping Cart</Link>
                                           </li>
                                           <li>
-                                              <a href="./checkout.html">Check Out</a>
+                                              <Link href="./checkout.html">Check Out</Link>
                                           </li>
                                           <li>
-                                              <a href="./blog-details.html">Blog Details</a>
+                                              <Link  href="./blog-details.html">Blog Details</Link>
                                           </li>
                                       </ul>
                                   </li>
                                   <li>
-                                      <a href="./blog.html">Blog</a>
+                                      <Link href="./blog.html">Blog</Link>
                                   </li>
                                   <li>
-                                      <a href="./contact.html">Contacts</a>
+                                      <Link href="./contact.html">Contacts</Link>
                                   </li>
                               </ul>
                           </nav>
@@ -134,9 +135,9 @@ const Header: React.FC = () => {
                       <div className="col-lg-3 col-md-3">
                           <div className="header__nav__option">
                              {/*  <SearchSwitch /> */}
-                              <a href="#">
-                                  <img src="/img/icon/heart.png" alt="" />
-                              </a>
+                              <Link href="#">
+                                  <Image src="/img/icon/heart.png" alt="" width={18} height={16}  />
+                              </Link>
 
                               {/* <ShoppingCartLink /> */}
                           </div>

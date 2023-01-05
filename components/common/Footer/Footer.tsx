@@ -1,3 +1,5 @@
+import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 import footerStyle from "./Footer.module.scss"
 
@@ -9,17 +11,17 @@ const Footer = () => {
                     <div className="col-lg-3 col-md-6 col-sm-6">
                         <div className={footerStyle.footer__about}>
                             <div className={footerStyle.footer__logo}>
-                                <a href="#">
-                                    <img src="img/footer-logo.png" alt="" />
-                                </a>
+                                <Link href="#">
+                                    <Image width={195} height={23} src="/img/footer-logo.png" alt="" />
+                                </Link>
                             </div>
                             <p>
                                 The customer is at the heart of our unique business model, which
                                 includes design.
                             </p>
-                            <a href="#">
-                                <img src="img/payment.png" alt="" />
-                            </a>
+                            <Link href="#">
+                                <Image width={218} height={23} src="/img/payment.png" alt="" />
+                            </Link>
                         </div>
                     </div>
                     <div className="col-lg-2 offset-lg-1 col-md-3 col-sm-6">
@@ -27,16 +29,16 @@ const Footer = () => {
                             <h6>Shopping</h6>
                             <ul>
                                 <li>
-                                    <a href="#">Clothing Store</a>
+                                    <Link href="#">Clothing Store</Link>
                                 </li>
                                 <li>
-                                    <a href="#">Trending Shoes</a>
+                                    <Link href="#">Trending Shoes</Link>
                                 </li>
                                 <li>
-                                    <a href="#">Accessories</a>
+                                    <Link href="#">Accessories</Link>
                                 </li>
                                 <li>
-                                    <a href="#">Sale</a>
+                                    <Link href="#">Sale</Link>
                                 </li>
                             </ul>
                         </div>
@@ -46,16 +48,16 @@ const Footer = () => {
                             <h6>Shopping</h6>
                             <ul>
                                 <li>
-                                    <a href="#">Contact Us</a>
+                                    <Link href="#">Contact Us</Link>
                                 </li>
                                 <li>
-                                    <a href="#">Payment Methods</a>
+                                    <Link href="#">Payment Methods</Link>
                                 </li>
                                 <li>
-                                    <a href="#">Delivary</a>
+                                    <Link href="#">Delivary</Link>
                                 </li>
                                 <li>
-                                    <a href="#">Return &amp; Exchanges</a>
+                                    <Link href="#">Return &amp; Exchanges</Link>
                                 </li>
                             </ul>
                         </div>
@@ -85,9 +87,9 @@ const Footer = () => {
                             <p>
                                 Copyright © 2020 All rights reserved | This template is made with{" "}
                                 <i className="fa fa-heart-o" aria-hidden="true" /> by{" "}
-                                <a href="https://colorlib.com" target="_blank">
+                                <Link href="https://colorlib.com" target="_blank">
                                     Colorlib
-                                </a>
+                                </Link>
                             </p>
                             {/* Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. */}
                         </div>
