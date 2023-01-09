@@ -3,7 +3,7 @@ import Layout from "../../components/layout";
 import { getAllPostIds, getPostData } from "../../lib/posts";
 import { GetStaticProps, GetStaticPaths, GetServerSideProps } from 'next';
 
-export default function Post({ postData }) {
+export default function Post({ postData }: any) {
   console.log(postData)
   return (
     <Layout>
@@ -20,7 +20,7 @@ export default function Post({ postData }) {
   );
 }
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps = async ({ params }:any) => {
   // Add the "await" keyword like this:
   const postData = await getPostData(params.id);
 

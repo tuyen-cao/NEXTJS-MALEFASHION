@@ -8,7 +8,7 @@ import LayoutLHS from '../../components/common/Layout2Cols';
 import LeftSideBar from '../../components/common/LeftSideBar';
 import Layout2Cols from '../../components/common/Layout2Cols';
 
-const Shop = ({ bbb }) => {
+const Shop = ({ bbb }: any) => {
     console.log(bbb)
     return (
         <>
@@ -23,9 +23,9 @@ const Shop = ({ bbb }) => {
                     alt="Your Name"
                 />
                 <ul>
-                    {bbb.map((product: any) => {
+                    {bbb.map((product: any, i:number) => {
 
-                        return <li><Link href={`http://localhost:4500/products/${product.id}`}>{product.title}</Link></li>
+                        return <li key={`pro_${i}`}><Link href={`http://localhost:4500/products/${product.id}`}>{product.title}</Link></li>
                     })}
                 </ul>
             </div>
