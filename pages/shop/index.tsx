@@ -22,12 +22,12 @@ const Shop = ({ bbb }: any) => {
                     width={256} // Desired size with correct aspect ratio
                     alt="Your Name"
                 />
-                <ul>
+                {/* <ul>
                     {bbb.map((product: any, i:number) => {
 
                         return <li key={`pro_${i}`}><Link href={`http://localhost:4500/products/${product.id}`}>{product.title}</Link></li>
                     })}
-                </ul>
+                </ul> */}
             </div>
         </>
     )
