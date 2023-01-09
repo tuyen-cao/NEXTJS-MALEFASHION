@@ -17,7 +17,7 @@ const ShoppingCart = () => {
 }
 
 export default ShoppingCart
-
+/* 
 ShoppingCart.getLayout = function getLayout(page: ReactElement) {
   return (
     <Layout>
@@ -39,6 +39,6 @@ ShoppingCart.getLayout = function getLayout(page: ReactElement) {
     </Layout>
   )
 }
-
+ */
 
 

@@ -3,11 +3,11 @@ import Layout from "../../components/layout";
 import { getAllPostIds, getPostData } from "../../lib/posts";
 import { GetStaticProps, GetStaticPaths, GetServerSideProps } from 'next';
 
-export default function Post({ postData }: any) {
-  console.log(postData)
+export default function Post(/* { postData }: any */) {
+ // console.log(postData)
   return (
-    <Layout>
-      <Head>
+    <Layout>Test
+      {/* <Head>
         <title>{postData.title}</title>
       </Head>
       {postData.title}
@@ -15,11 +15,11 @@ export default function Post({ postData }: any) {
       {postData.id}
       <br />
       {postData.date} <br />
-      <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+      <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} /> */}
     </Layout>
   );
 }
-
+/* 
 export const getStaticProps: GetStaticProps = async ({ params }:any) => {
   // Add the "await" keyword like this:
   const postData = await getPostData(params.id);
@@ -29,11 +29,11 @@ export const getStaticProps: GetStaticProps = async ({ params }:any) => {
       postData,
     },
   };
-}
-export const getStaticPaths: GetStaticPaths = async () => {
+} */
+/* export const getStaticPaths: GetStaticPaths = async () => {
   const paths = getAllPostIds();
   return {
     paths,
     fallback: false,
   };
-}
+} */

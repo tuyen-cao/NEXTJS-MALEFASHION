@@ -8,8 +8,8 @@ import LayoutLHS from '../../components/common/Layout2Cols';
 import LeftSideBar from '../../components/common/LeftSideBar';
 import Layout2Cols from '../../components/common/Layout2Cols';
 
-const Shop = ({ bbb }: any) => {
-    console.log(bbb)
+const Shop = (/* { bbb }: any */) => {
+    //console.log(bbb)
     return (
         <>
 
@@ -35,7 +35,7 @@ const Shop = ({ bbb }: any) => {
 
 export default Shop
 
-
+/* 
 Shop.getLayout = function getLayout(page: ReactElement) {
     return (
         <Layout>
@@ -57,9 +57,9 @@ Shop.getLayout = function getLayout(page: ReactElement) {
         </Layout>
     )
 }
+ */
 
-
-
+/* 
 export async function getStaticProps() {
 
     const aaaa = await fetch("http://localhost:4500/products").then(
@@ -76,4 +76,4 @@ export async function getStaticProps() {
     return {
         props: { bbb }
     };
-}
+} */
