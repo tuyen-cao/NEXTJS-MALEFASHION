@@ -80,7 +80,9 @@ const MainMenu: React.FC < {
                                 key={
                                     `menuitem-${i}`
                             }>
-                                <Link href={
+                                <Link key={
+                                    `menuitem-${i}`
+                                } href={
                                     item.href
                                 }>
                                     {

@@ -10,7 +10,7 @@ import { useRouter } from 'next/router';
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home({
+export default function Home(/* {
   allPostsData
 }: {
   allPostsData: {
@@ -18,7 +18,7 @@ export default function Home({
     title: string
     id: string
   }[]
-}) {
+} */) {
   
   const router = useRouter()
   //router.push('/home')
@@ -156,7 +156,7 @@ export default function Home({
     </>
   )
 }
-
+/* 
 export const getStaticProps: GetStaticProps = async () => {
   const allPostsData = getSortedPostsData();
   return {
@@ -164,4 +164,4 @@ export const getStaticProps: GetStaticProps = async () => {
       allPostsData,
     },
   };
-}
+} */
