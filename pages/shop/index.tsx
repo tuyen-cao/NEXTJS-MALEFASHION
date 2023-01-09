@@ -35,7 +35,7 @@ const Shop = (/* { bbb }: any */) => {
 
 export default Shop
 
-/* 
+
 Shop.getLayout = function getLayout(page: ReactElement) {
     return (
         <Layout>
@@ -57,7 +57,7 @@ Shop.getLayout = function getLayout(page: ReactElement) {
         </Layout>
     )
 }
- */
+
 
 /* 
 export async function getStaticProps() {
