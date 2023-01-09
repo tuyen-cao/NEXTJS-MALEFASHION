@@ -2,11 +2,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import footerStyle from "./Footer.module.scss"
+import styled  from 'styled-components'
 
 const Footer = () => {
     return (
         <footer className={footerStyle.footer}>
-            <div className="container">
+            <ContainerStyled className="container">
                 <div className="row">
                     <div className="col-lg-3 col-md-6 col-sm-6">
                         <div className={footerStyle.footer__about}>
@@ -95,9 +96,14 @@ const Footer = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </ContainerStyled>
         </footer>
     )
 }
 
 export default Footer
+
+
+const ContainerStyled = styled.div`
+    border: 1px solid #f1f1f1;
+`

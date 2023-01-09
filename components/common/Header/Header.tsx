@@ -163,7 +163,7 @@ const SignInLink: React.FC = () => {
 const HeaderLogo: React.FC = () => {
     return <div className="col-lg-3 col-md-3">
         <div className="header__logo">
-            <Link href="./">
+            <Link href="/home">
                 <Image width={196}
                     height={23}
                     src="/img/logo.png"

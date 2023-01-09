@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Link from 'next/link'
 import React from 'react'
 import Layout from '../../components/common/Layout/Layout'
 
@@ -13,6 +14,10 @@ const Home = () => {
         <main>
           Home page
           aaaaaa
+
+          <Link href="/">
+                home page
+            </Link>
 
         </main>
       </Layout>
