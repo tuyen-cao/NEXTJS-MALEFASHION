@@ -6,6 +6,7 @@ import { getSortedPostsData } from '../lib/posts';
 import Link from 'next/link';
 import { GetStaticProps } from 'next';
 import Layout from '../components/common/Layout';
+import { useRouter } from 'next/router';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,6 +19,9 @@ export default function Home({
     id: string
   }[]
 }) {
+  
+  const router = useRouter()
+  //router.push('/home')
   return (
     <><Layout >
       <Head>

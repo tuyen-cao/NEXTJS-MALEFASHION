@@ -4,7 +4,7 @@ import { Breadcrumb } from 'react-bootstrap'
 
 const Breadcrumbs = () => {
     const router = useRouter()
-  
+
     const breadcrumbs = useMemo(() => {
         // Remove any query parameters, as those aren't included in breadcrumbs
         const asPathWithoutQuery = router.asPath.split("?")[0];
@@ -19,14 +19,16 @@ const Breadcrumbs = () => {
         const crumblist = asPathNestedRoutes.map((subpath, idx) => {
             // We can get the partial nested route for the crumb
             // by joining together the path parts up to this point.
-            const href = "/" + asPathNestedRoutes.slice(0, idx + 1).join("/");
+            const href = asPathNestedRoutes.slice(0, idx + 1).join("/") === '/home' ? '/' : '/' + asPathNestedRoutes.slice(0, idx + 1).join("/")
             // The title will just be the route string for now
             const title = subpath;
+
+            const isActive = router.asPath === (href === "/home" ? "/" : href);
+
             return { href, title };
         })
 
-        // Add in a default "Home" crumb for the top-level
-        return [{ href: "/", title: "Home" }, ...crumblist];
+        return crumblist
 
     }, [router.asPath])
 
@@ -41,15 +43,15 @@ const Breadcrumbs = () => {
                                 <div className="breadcrumb__text">
                                     <h4>{breadcrumbs[breadcrumbs.length - 1].title}</h4>
                                     <div className="breadcrumb__links">
-                                        <Breadcrumb>
+                                        <Breadcrumb key="Breadcrumb"><>
                                             {breadcrumbs.map((crumb, i) => {
                                                 return <>
-                                                    {(i === breadcrumbs.length - 1)
-                                                        ? <Breadcrumb.Item active>{crumb.title}</Breadcrumb.Item>
-                                                        : <Breadcrumb.Item href={crumb.href}>{crumb.title}</Breadcrumb.Item>
+                                                    {(i === breadcrumbs.length - 1 || breadcrumbs[i].href === '/home')
+                                                        ? <Breadcrumb.Item active key={"breadcrumb-" + i} >{crumb.title}</Breadcrumb.Item>
+                                                        : <Breadcrumb.Item href={crumb.href} key={"breadcrumb-" + i}>{crumb.title}</Breadcrumb.Item>
                                                     }
                                                 </>
-                                            })}
+                                            })}</>
                                         </Breadcrumb>
                                     </div>
                                 </div>

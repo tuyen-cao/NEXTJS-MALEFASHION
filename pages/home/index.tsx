@@ -5,18 +5,18 @@ import Layout from '../../components/common/Layout/Layout'
 const Home = () => {
   return (
     <>
-    <Layout >
+      <Layout >
         <Head>
-            <title>Home page</title>
+          <title>Home page</title>
         </Head>
-      
+
         <main>
-            Home page
-            aaaaaa
-          
+          Home page
+          aaaaaa
+
         </main>
-    </Layout>
-</>
+      </Layout>
+    </>
   )
 }
 

@@ -6,10 +6,9 @@ import Header from "../Header"
 const Layout = ({ children }: layoutProps) => {
     return <>
         <Header/>
-        <Breadcrumbs/>
+        <Breadcrumbs />
         {children}
         <Footer/>
-    </>
-}
+    </>}
 
 export default Layout
