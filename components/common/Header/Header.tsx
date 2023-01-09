@@ -1,4 +1,4 @@
-import React, { ReactEventHandler, useEffect } from "react"
+import React, {ReactEventHandler, useEffect} from "react"
 
 /* import ShoppingCartLink from "./utilities/ShoppingCartLink"
 import { useTypedSelector } from "store";
@@ -7,21 +7,34 @@ import { useDispatch } from "react-redux";
 import { BasketItem } from "models/types"; */
 import Link from "next/link";
 import Image from "next/image";
-import { LinkProps } from "./../../../models/types"
-import { useRouter } from "next/router";
+import {LinkProps} from "./../../../models/types"
+import {useRouter} from "next/router";
 
 const Header: React.FC = () => {
     // const dispatch = useDispatch()
-    //const productInCart = useTypedSelector(selectedProducts);
+    // const productInCart = useTypedSelector(selectedProducts);
     const menuItems = [
-        { text: "Home", href: "/home" },
-        { text: "Shop", href: "/shop" },
-        { text: "Pages", href: "/pages" },
-        { text: "Blogs", href: "/blogs" },
-        { text: "Contact", href: "/contact" },
+        {
+            text: "Home",
+            href: "/home"
+        },
+        {
+            text: "Shop",
+            href: "/shop"
+        },
+        {
+            text: "Pages",
+            href: "/pages"
+        },
+        {
+            text: "Blogs",
+            href: "/blogs"
+        }, {
+            text: "Contact",
+            href: "/contact"
+        },
     ]
-    useEffect(() => {
-        /* const localStorageProductsInCart = localStorage.getItem("productsInCart");
+    useEffect(() => { /* const localStorageProductsInCart = localStorage.getItem("productsInCart");
         const storedProductsInCart = typeof localStorageProductsInCart === "string"
             ? JSON.parse(localStorageProductsInCart) : [];
         if (productInCart.length === 0 && storedProductsInCart.length > 0) {
@@ -32,14 +45,15 @@ const Header: React.FC = () => {
     }, [])
     return (
         <>
-            <HeaderNavOptionsWrapperMobile />
-            <header className="header">
-                <HeaderTop />
+            <HeaderNavOptionsWrapperMobile/>
+            <header className="header">  
+                <HeaderTop/>
                 <MainHeader>
                     <>
-                        <HeaderLogo />
-                        <MainMenu ItemList={menuItems} key="header__menu" />
-                        <HeaderNavOptionsWrapper />
+                        <HeaderLogo/>
+                        <MainMenu ItemList={menuItems}
+                            key="header__menu"/>
+                        <HeaderNavOptionsWrapper/>
                     </>
                 </MainHeader>
             </header>
@@ -50,33 +64,46 @@ const Header: React.FC = () => {
 export default Header
 
 
-const MainMenu: React.FC<{ ItemList: LinkProps[] }> = (props) => {
+const MainMenu: React.FC < {
+    ItemList: LinkProps[]
+} > = (props) => {
     const router = useRouter()
-    const { ItemList } = props
-    return <>
-        {ItemList.length &&
-            <div className="col-lg-6 col-md-6">
-                <nav className="header__menu mobile-menu">
-                    <ul>
-                        {ItemList.map((item, i) => {
-                            const path = item.href === '/' ? '/home' : item.href
-                            return <>
-                                {(router.pathname === path)
-                                    ? <li className="active" key={`menuitem-${i}`}>
-                                        <Link href={item.href}>{item.text}</Link>
-                                    </li>
-                                    : <>
-                                        <li key={`menuitem-${i}`}>
-                                            <Link href={item.href}>{item.text}</Link>
-                                        </li>
-                                    </>}
+    const {ItemList} = props
+    return <> {
+        ItemList.length && <div className="col-lg-6 col-md-6">
+            <nav className="header__menu mobile-menu">
+                <ul> {
+                    ItemList.map((item, i) => {
+                        const path = item.href === '/' ? '/home' : item.href
+                        return <> {
+                            (router.pathname === path) ? <li className="active"
+                                key={
+                                    `menuitem-${i}`
+                            }>
+                                <Link href={
+                                    item.href
+                                }>
+                                    {
+                                    item.text
+                                }</Link>
+                            </li> : <>
+                                <li key={
+                                    `menuitem-${i}`
+                                }>
+                                    <Link href={
+                                        item.href
+                                    }>
+                                        {
+                                        item.text
+                                    }</Link>
+                                </li>
                             </>
-                        })}
-                    </ul>
-                </nav>
-            </div>
-        }
-    </>
+                        } </>
+                })
+                } </ul>
+            </nav>
+        </div> 
+    } </>
 }
 
 const HeaderTop: React.FC = () => {
@@ -92,12 +119,13 @@ const HeaderTop: React.FC = () => {
                     <div className="col-lg-6 col-md-5">
                         <div className="header-top__right">
                             <div className="header-top__links">
-                                <SignInLink />
+                                <SignInLink/>
                                 <Link href="#">FAQs</Link>
                             </div>
                             <div className="header-top__hover">
                                 <span>
-                                    Usd <i className="arrow_carrot-down" />
+                                    Usd
+                                    <i className="arrow_carrot-down"/>
                                 </span>
                                 <ul>
                                     <li>USD</li>
@@ -112,16 +140,17 @@ const HeaderTop: React.FC = () => {
     </>
 }
 
-const MainHeader: React.FC<{ children: React.ReactElement }> = (props) => {
-    const { children } = props
+const MainHeader: React.FC < {
+    children: React.ReactElement
+} > = (props) => {
+    const {children} = props
 
     return <>
         <div className="container">
             <div className="row">
-                {children}
-            </div>
+                {children} </div>
             <div className="canvas__open">
-                <i className="fa fa-bars" />
+                <i className="fa fa-bars"/>
             </div>
         </div>
     </>
@@ -133,7 +162,10 @@ const HeaderLogo: React.FC = () => {
     return <div className="col-lg-3 col-md-3">
         <div className="header__logo">
             <Link href="./">
-                <Image width={196} height={23} src="/img/logo.png" alt="" />
+                <Image width={196}
+                    height={23}
+                    src="/img/logo.png"
+                    alt=""/>
             </Link>
         </div>
     </div>
@@ -142,7 +174,9 @@ const HeaderLogo: React.FC = () => {
 const WishListOpt: React.FC = () => {
     return <>
         <Link href="#">
-            <Image src="/img/icon/heart.png" alt="" width={18} height={16} />
+            <Image src="/img/icon/heart.png" alt=""
+                width={18}
+                height={16}/>
         </Link>
     </>
 }
@@ -150,23 +184,24 @@ const HeaderNavOptionsWrapper: React.FC = () => {
     return <>
         <div className="col-lg-3 col-md-3">
             <div className="header__nav__option">
-                <HeaderNavOptions />
+                <HeaderNavOptions/>
             </div>
         </div>
     </>
 }
 const HeaderNavOptionsWrapperMobile: React.FC = () => {
     return <>
-        <div className="offcanvas-menu-overlay" ></div>
+        <div className="offcanvas-menu-overlay"></div>
         <div className="offcanvas-menu-wrapper">
             <div className="offcanvas__option">
                 <div className="offcanvas__links">
-                    <SignInLink />
+                    <SignInLink/>
                     <Link href="#">FAQs</Link>
                 </div>
                 <div className="offcanvas__top__hover">
                     <span>
-                        Usd <i className="arrow_carrot-down" />
+                        Usd
+                        <i className="arrow_carrot-down"/>
                     </span>
                     <ul>
                         <li>USD</li>
@@ -175,9 +210,9 @@ const HeaderNavOptionsWrapperMobile: React.FC = () => {
                 </div>
             </div>
             <div className="offcanvas__nav__option">
-                <HeaderNavOptions />
+                <HeaderNavOptions/>
             </div>
-            <div id="mobile-menu-wrap" />
+            <div id="mobile-menu-wrap"/>
             <div className="offcanvas__text">
                 <p>Free shipping, 30-day return or refund guarantee.</p>
             </div>
@@ -185,10 +220,6 @@ const HeaderNavOptionsWrapperMobile: React.FC = () => {
     </>
 }
 const HeaderNavOptions: React.FC = () => {
-    return <>
-        {/*  <SearchSwitch /> */}
-        <WishListOpt />
-        {/* <ShoppingCartLink /> */}
-
-    </>
+    return <> {/*  <SearchSwitch /> */}
+        <WishListOpt/> {/* <ShoppingCartLink /> */} </>
 }
