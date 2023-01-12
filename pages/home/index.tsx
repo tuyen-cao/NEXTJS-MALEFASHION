@@ -1,16 +1,12 @@
+import {  Layout, MainLayout } from '@/components/common/layout'
 import Head from 'next/head'
 import Link from 'next/link'
 import React from 'react'
-import Layout from '../../components/common/Layout/Layout'
 
 const Home = () => {
   return (
     <>
-      <Layout >
-        <Head>
-          <title>Home page</title>
-        </Head>
-
+      <Layout>
         <main>
           Home page
           aaaaaa

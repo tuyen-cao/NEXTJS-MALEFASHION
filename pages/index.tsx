@@ -5,7 +5,7 @@ import { Inter } from '@next/font/google'
 import { getSortedPostsData } from '../lib/posts';
 import Link from 'next/link';
 import { GetStaticProps } from 'next';
-import Layout from '../components/common/Layout';
+import Layout from '../components/common/layout';
 import { useRouter } from 'next/router';
 
 const inter = Inter({ subsets: ['latin'] })
@@ -21,7 +21,7 @@ export default function Home(/* {
 } */) {
   
   const router = useRouter()
-  //router.push('/home')
+  router.push('/home')
   return (
     <>
       {/*  <Head>

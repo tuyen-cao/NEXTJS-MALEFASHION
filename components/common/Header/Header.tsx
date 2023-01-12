@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { BasketItem } from "models/types"; */
 import Link from "next/link";
 import Image from "next/image";
-import {LinkProps} from "./../../../models/types"
+import {LinkProps} from "../../../models/common"
 import {useRouter} from "next/router";
 
 const Header: React.FC = () => {
@@ -163,7 +163,7 @@ const SignInLink: React.FC = () => {
 const HeaderLogo: React.FC = () => {
     return <div className="col-lg-3 col-md-3">
         <div className="header__logo">
-            <Link href="/home">
+            <Link href="/">
                 <Image width={196}
                     height={23}
                     src="/img/logo.png"

@@ -1,7 +1,7 @@
+import { LayoutProps } from '@/models/common'
 import React from 'react'
-import { layoutProps } from "../../../models/types"
 
-const Layout2Cols = ({ children }: layoutProps) => {
+export const TwoColsLayout = ({ children }: LayoutProps) => {
     return (
         <>
             <section className="spad">
@@ -15,4 +15,3 @@ const Layout2Cols = ({ children }: layoutProps) => {
     )
 }
 
-export default Layout2Cols

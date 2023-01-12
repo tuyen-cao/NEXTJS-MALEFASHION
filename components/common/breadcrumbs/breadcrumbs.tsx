@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 import React, { useState, useEffect, useMemo } from 'react'
 import { Breadcrumb } from 'react-bootstrap'
 
-const Breadcrumbs = () => {
+const Breadcrumbs:React.FC = () => {
     const router = useRouter()
 
     const breadcrumbs = useMemo(() => {

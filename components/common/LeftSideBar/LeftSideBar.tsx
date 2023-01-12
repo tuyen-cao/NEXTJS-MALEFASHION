@@ -1,5 +1,5 @@
 import React from 'react'
-import { layoutProps } from "../../../models/types"
+import { layoutProps } from "../../../models/common"
 
 const LeftSideBar = ({ children }: layoutProps) => {
     return (
