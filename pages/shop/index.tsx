@@ -7,7 +7,7 @@ import Head from 'next/head';
 
 const Shop = ( /* { bbb }: any */
 ) => { // console.log(bbb)
-    return (
+    return ( 
         <>
 
             <div>
