@@ -1,11 +1,11 @@
-"use client"
+'use client';
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import footerStyle from "./Footer.module.scss"
+import footerStyle from "./footer.module.scss"
 import styled  from 'styled-components'
 
-const Footer = () => {
+const Footer:React.FC = () => {
     return (
         <footer className={footerStyle.footer}>
             <ContainerStyled className="container">

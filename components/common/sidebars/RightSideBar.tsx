@@ -1,7 +1,7 @@
-import { LayoutProps } from 'models/common'
+import { LayoutProps } from '@/models/common'
 import React from 'react'
 
-const RightSideBar = ({ children }: LayoutProps) => {
+export const RightSideBar = ({ children }: LayoutProps) => {
     return (
         <>
             <div className="col-lg-4">
@@ -12,5 +12,3 @@ const RightSideBar = ({ children }: LayoutProps) => {
         </>
     )
 }
-
-export default RightSideBar

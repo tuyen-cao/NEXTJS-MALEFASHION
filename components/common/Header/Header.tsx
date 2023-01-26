@@ -1,3 +1,5 @@
+"use client"
+
 import React, {ReactEventHandler, useEffect} from "react"
 
 /* import ShoppingCartLink from "./utilities/ShoppingCartLink"
@@ -10,7 +12,7 @@ import Image from "next/image";
 import {LinkProps} from "../../../models/common"
 import {useRouter} from "next/router";
 
-const Header: React.FC = () => {
+export const Header: React.FC = () => {
     // const dispatch = useDispatch()
     // const productInCart = useTypedSelector(selectedProducts);
     const menuItems = [
@@ -61,7 +63,7 @@ const Header: React.FC = () => {
     )
 }
 
-export default Header
+
 
 
 const MainMenu: React.FC < {
