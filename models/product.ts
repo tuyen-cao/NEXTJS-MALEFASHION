@@ -9,3 +9,8 @@ export interface Product {
     category: string,
     thumbnail: string
 }
+
+export interface ProductListProps {
+    products: Product[],
+    totalItems: number
+}

@@ -1,17 +1,19 @@
-import Image from 'next/image'
 import Link from 'next/link'
-import { ReactElement } from 'react';
+import { ReactElement, useState } from 'react';
 import Head from 'next/head';
 import { Layout, TwoColsLayout } from '@/components/common/layout';
 import LeftSidebar from '@/components/common/left-sidebar';
 import { fetchProduct } from '@/services';
-import { Product } from '@/models';
+import { Product, ProductListProps } from '@/models';
 import ProductItem from '@/components/product-item/product-item';
+import Pagination from '@/components/common/pagination';
+import { InferGetStaticPropsType } from 'next';
+import { paginate } from '@/utilities/helper-functions';
+import { NUMOFITEMPERPAGE } from '@/constants/product.constant';
 
-const Shop = ({ products }: {
-    products: Product[]
-}) => {
-    if (products.length === 0) return <><p>There is not product</p></>
+const Shop = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
+
+    if (data?.totalItems === 0) return <><p>There is not product</p></>
     return (
         <>
             <div>
@@ -19,13 +21,8 @@ const Shop = ({ products }: {
                 <p>
                     <Link href="/shop/shopping-cart">Shopping cart</Link>
                 </p>
-                <ProductList  list={products} />
-                {/* <ul>
-                    {bbb.map((product: any, i:number) => {
-
-                        return <li key={`pro_${i}`}><Link href={`http://localhost:4500/products/${product.id}`}>{product.title}</Link></li>
-                    })}
-                </ul> */} </div>
+                <ProductList listProps={data} />
+            </div>
         </>
     )
 }
@@ -72,22 +69,37 @@ export async function getStaticProps() {
             thumbnail: product.thumbnail
         };
     });
+    const data: ProductListProps = {
+        products: products,
+        totalItems: response?.data?.limit
+    }
     return {
-        props: { products: products }
+        props: {
+            data
+        }
     };
 }
 
 
-export const ProductList: React.FC<{ list: Product[] }> = (props) => {
-    const list = props.list
+const ProductList: React.FunctionComponent<{ listProps: ProductListProps | undefined }> = (props) => {
+    const { listProps } = props
+    const [currentPage, setCurrentPage] = useState(1);
+    const paginatedPosts = paginate(listProps!.products, currentPage, NUMOFITEMPERPAGE);
+
+    const handlePageClick = (event: number) => {
+        setCurrentPage(event + 1)
+    }
 
     return (
         <div className='row' key={`product-list-row`}>
-            {list.map((product: Product) => {
-                return <div className="col-lg-4 col-md-6 col-sm-6"  key={`product-list-col-${product.id}`}>
+            {paginatedPosts.map((product: Product) => {
+                return <div className="col-lg-4 col-md-6 col-sm-6" key={`product-list-col-${product.id}`}>
                     <ProductItem key={`product-${product.id}`} product={product} />
                 </div>
             })}
+            <Pagination totalItems={listProps?.totalItems} onPageChange={handlePageClick} />
         </div>
     )
 }
+
+

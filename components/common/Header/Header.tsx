@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { BasketItem } from "models/types"; */
 import Link from "next/link";
 import Image from "next/image";
-import { LinkProps } from "../../../models/common"
+import { LayoutProps, LinkProps } from "../../../models/common"
 import { useRouter } from "next/router";
 import { clsx } from 'clsx';
 
@@ -128,10 +128,7 @@ const HeaderTop: React.FC = () => {
     </>
 }
 
-const MainHeader: React.FC<{
-    children: React.ReactElement
-}> = (props) => {
-    const { children } = props
+const MainHeader: React.FC<LayoutProps> = ({ children }) => {
 
     return <>
         <div className="container">
