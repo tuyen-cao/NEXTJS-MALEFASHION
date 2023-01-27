@@ -1,10 +1,5 @@
-import Head from 'next/head'
-import Link from 'next/link'
-import Script from 'next/script'
-import { ReactElement } from 'react'
-import Layout from '../../../components/common/layout'
-import Layout2Cols from '../../../components/common/layout/twoColsLayout'
-import RightSideBar from '../../../components/common/rightSideBar'
+import Link from "next/link"
+
 
 const ShoppingCart = () => {
   return (

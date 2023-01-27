@@ -1,7 +1,7 @@
+import { LayoutProps } from '@/models/index'
 import React from 'react'
-import { layoutProps } from "../../../models/common"
 
-const LeftSideBar = ({ children }: layoutProps) => {
+const LeftSideBar = ({ children }: LayoutProps) => {
     return (
         <>
             <div className="col-lg-3">

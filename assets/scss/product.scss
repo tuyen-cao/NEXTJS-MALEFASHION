@@ -36,7 +36,7 @@
 
   &.sale {
 
-    .product-item__pic {
+    .product__item__pic {
 
       .label {
         color: $white-color;
@@ -44,7 +44,7 @@
       }
     }
 
-    .product-item__text {
+    .product__item__text {
 
       .rating {
 
@@ -61,7 +61,7 @@
 
   &:hover {
 
-    .product-item__pic {
+    .product__item__pic {
 
       .product__hover {
         right: 20px;
@@ -69,7 +69,7 @@
       }
     }
 
-    .product-item__text {
+    .product__item__text {
 
       a {
         top: 22px;
@@ -88,7 +88,7 @@
   }
 }
 
-.product-item__pic {
+.product__item__pic {
     height: 260px;
     position: relative;
     background-position: center center;
@@ -162,7 +162,7 @@
     }
 }
 
-.product-item__text {
+.product__item__text {
   padding-top: 25px;
   position: relative;
 
@@ -192,7 +192,6 @@
     i {
       font-size: 14px;
       color:$color-13;
-      margin-right: -5px;
     }
   }
 

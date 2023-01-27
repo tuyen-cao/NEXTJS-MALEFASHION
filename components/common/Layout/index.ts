@@ -1,3 +1,3 @@
-export * from './mainLayout'
+export * from './main-layout'
 export * from './empty'
-export * from './twoColsLayout'
+export * from './two-cols-layout'

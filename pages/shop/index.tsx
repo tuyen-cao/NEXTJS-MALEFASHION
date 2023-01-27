@@ -1,28 +1,26 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import {ReactElement} from 'react';
-import LeftSideBar from '../../components/common/leftSideBar';
-import {Layout, TwoColsLayout } from '@/components/common/layout';
+import { ReactElement } from 'react';
 import Head from 'next/head';
+import { Layout, TwoColsLayout } from '@/components/common/layout';
+import LeftSidebar from '@/components/common/left-sidebar';
+import { fetchProduct } from '@/services';
+import { Product } from '@/models';
+import ProductItem from '@/components/product-item/product-item';
 
-const Shop = ( /* { bbb }: any */
-) => { // console.log(bbb)
+const Shop = ({ products }: {
+    products: Product[]
+}) => {
+    if (products.length === 0) return <><p>There is not product</p></>
     return (
         <>
-
             <div>
                 Shop page
                 <p>
                     <Link href="/shop/shopping-cart">Shopping cart</Link>
                 </p>
-                <Image src="/img/hero/hero-1.jpg"
-                    // Route of the image file
-                    height={107}
-                    // Desired size with correct aspect ratio
-                    width={256}
-                    // Desired size with correct aspect ratio
-                    alt="Your Name"
-                /> {/* <ul>
+                <ProductList  list={products} />
+                {/* <ul>
                     {bbb.map((product: any, i:number) => {
 
                         return <li key={`pro_${i}`}><Link href={`http://localhost:4500/products/${product.id}`}>{product.title}</Link></li>
@@ -35,17 +33,17 @@ const Shop = ( /* { bbb }: any */
 export default Shop
 
 
-Shop.getLayout = function getLayout(page : ReactElement) {
+Shop.getLayout = function getLayout(page: ReactElement) {
     return (
         <Layout>
             <Head>
                 <title>SHOP page</title>
             </Head>
             <TwoColsLayout>
-                <LeftSideBar>
+                <LeftSidebar>
                     <p>Side bar</p>
                     <p>Side bar gfjdsgfjfjhfjfgh</p>
-                </LeftSideBar>
+                </LeftSidebar>
                 <div className="col-lg-9">
                     {page}</div>
             </TwoColsLayout>
@@ -54,21 +52,42 @@ Shop.getLayout = function getLayout(page : ReactElement) {
 }
 
 
-/* 
 export async function getStaticProps() {
+    const response = await fetchProduct()
+    if (response.data === undefined) return {
+        props: { products: [] }
+    };
 
-    const aaaa = await fetch("http://localhost:4500/products").then(
-        (results) => results.json()
-    )
 
-    const bbb = aaaa.map((post: any) => {
+    const products = response?.data?.products.map((product: Product) => {
         return {
-
-            id: post.id,
-            title: post.title
+            id: product.id,
+            title: product.title,
+            price: product.price,
+            discountPercentage: product.discountPercentage,
+            rating: product.rating,
+            stock: product.stock,
+            brand: product.brand,
+            category: product.category,
+            thumbnail: product.thumbnail
         };
     });
     return {
-        props: { bbb }
+        props: { products: products }
     };
-} */
+}
+
+
+export const ProductList: React.FC<{ list: Product[] }> = (props) => {
+    const list = props.list
+
+    return (
+        <div className='row' key={`product-list-row`}>
+            {list.map((product: Product) => {
+                return <div className="col-lg-4 col-md-6 col-sm-6"  key={`product-list-col-${product.id}`}>
+                    <ProductItem key={`product-${product.id}`} product={product} />
+                </div>
+            })}
+        </div>
+    )
+}
