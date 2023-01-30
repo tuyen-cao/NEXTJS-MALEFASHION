@@ -1,10 +1,15 @@
 import React from 'react'
 import { Product } from '@/models'
-import { fetchProduct } from '@/services'
+import { fetchProduct, fetchProductDetail } from '@/services'
 import { GetStaticProps, GetStaticPropsContext } from 'next'
+import { useRouter } from 'next/router'
 
-const ProductDetailPage: React.FC<{ product: Product }> = (props) => {
+const ProductDetailPage: React.FC<{ product:Product }> = (props) => {
     const product = props.product
+    const router = useRouter()
+
+    if(router.isFallback) return <div><strong>Loading</strong></div>
+
     return (
         <div>
             {product.title} ====== {product.price}
@@ -19,7 +24,7 @@ export async function getStaticPaths() {
 
     return {
         paths: response?.data?.products.map((product: Product) => ({ params: { slug: product.id.toString() } })),
-        fallback: false,
+        fallback: true,
     };
 }
 
@@ -30,14 +35,17 @@ export const getStaticProps: GetStaticProps<{ product: Product }> = async (conte
 
     if (!slug) return { notFound: true }
 
-    const response = await fetchProduct()
+    const response = await fetchProductDetail( Number(slug))
     if (response.data === undefined) return { notFound: true }
 
-    const product = response?.data?.products.find((product: Product) => product.id === Number(slug))
+    const product = response?.data
 
     if (!product) return { notFound: true }
 
     return {
-        props: { product }
+        props: { 
+            product: product 
+        },
+        revalidate: 3
     };
 }

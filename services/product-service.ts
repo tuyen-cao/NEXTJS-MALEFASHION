@@ -11,3 +11,10 @@ export const fetchProduct = async (urlparams: string = '') => {
     })
 }
 
+export const fetchProductDetail = async (productId: number) => {
+    return request({
+        url: API_CONSTANTS.API_GET_PRODUCT_DETAIL + productId,
+        method: REQUEST_METHOD.GET,
+    })
+}
+

@@ -22,7 +22,7 @@ const ProductItem: React.FC<{ product: Product }> = (props) => {
       <ul className="product__hover">
         <li><a href="#"><Image src="/img/icon/heart.png" alt="" width={38} height={36}/></a></li>
         <li><a href="#"><Image src="/img/icon/compare.png" alt=""  width={38} height={36}/> <span>Compare</span></a></li>
-        <li><Link href={`/shop/${product.title}`}><Image src="/img/icon/search.png" alt=""  width={38} height={36}/></Link></li>
+        <li><Link href={`/shop/${product.id}`}><Image src="/img/icon/search.png" alt=""  width={38} height={36}/></Link></li>
       </ul>
     </div>
     <div className="product__item__text">
