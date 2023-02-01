@@ -76,14 +76,13 @@ const MainMenu: React.FC<{
                 <ul key={`menulist`}> {
                     ItemList.map((item, i) => {
                         const path = item.href === '/' ? '/home' : item.href
-                        return <>
+                        return (
                             <li className={clsx({ active: router.pathname === path })}
                                 key={`menuitem-${i}`}>
                                 <Link key={`menuitem-link-${i}`} href={
                                     item.href
                                 }>{item.text}</Link>
-                            </li>
-                        </>
+                            </li>)
                     })
                 } </ul>
             </nav>

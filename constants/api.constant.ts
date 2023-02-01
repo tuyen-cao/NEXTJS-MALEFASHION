@@ -3,8 +3,9 @@ export const API_CONSTANTS = {
     API_UPDATE_PAYMENT_STATUS: '/orders/{orderId}',
     API_GET_PROMO_CODE: `/promoCodes?code={promocode}`,
     API_GET_ALL_CATEGORIES_INCLUDE_PRODUCTS: '/categories?_embed=products',
-    API_GET_PRODUCTS: '/products?limit=3',
-    API_GET_PRODUCT_DETAIL: '/products/'
+    API_GET_PRODUCTS: '/products',
+    API_GET_PRODUCT_DETAIL: '/products/',
+    API_LOGIN: '/auth/login',
 }
 export const URLPARAMS = {
     ALLPRODUCTTYPES: '_expand=productType&productTypeId_ne=0',

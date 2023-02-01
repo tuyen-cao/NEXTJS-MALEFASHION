@@ -9,7 +9,16 @@ const nextConfig = {
      [
       {
         source: '/products',
-        destination: 'https://dummyjson.com/products',
+        destination: `${process.env.SERVER_SERVICE_BASE_URL}/products`,
+      },
+      {
+        source: '/auth/login',
+        destination: `${process.env.SERVER_SERVICE_BASE_URL}/auth/login`,
+      },
+      {
+        source: '/auth/users',
+        
+        destination: `${process.env.SERVER_SERVICE_BASE_URL}/auth/users`,
       },
     ] : []
   },
@@ -18,6 +27,7 @@ const nextConfig = {
       { hostname: 'i.dummyjson.com' },
     ],
   },
+  
 }
 
 module.exports = nextConfig

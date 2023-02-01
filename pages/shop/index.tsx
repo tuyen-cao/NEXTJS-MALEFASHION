@@ -50,7 +50,7 @@ Shop.getLayout = function getLayout(page: ReactElement) {
 
 
 export async function getStaticProps() {
-    const response = await fetchProduct()
+    const response = await fetchProduct(`limit=2`)
     if (response.data === undefined) return {
         props: { products: [] }
     };
@@ -71,7 +71,7 @@ export async function getStaticProps() {
     });
     const data: ProductListProps = {
         products: products,
-        totalItems: response?.data?.limit
+        totalItems: products.length
     }
     return {
         props: {

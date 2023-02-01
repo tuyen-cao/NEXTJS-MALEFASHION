@@ -6,7 +6,6 @@ import { useRouter } from 'next/router'
 import dynamic from 'next/dynamic'
 
 
-
 const ProductDetailPage: React.FC<{ product: Product }> = (props) => {
     const PagePreloder = dynamic(() => import('@/components/common/page-preloder'), { ssr: false })
     const product = props.product
