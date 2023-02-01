@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 import React, { useState, useEffect, useMemo } from 'react'
 import { Breadcrumb } from 'react-bootstrap'
 
-const Breadcrumbs:React.FC = () => {
+const Breadcrumbs: React.FC = () => {
     const router = useRouter()
 
     const breadcrumbs = useMemo(() => {
@@ -45,12 +45,13 @@ const Breadcrumbs:React.FC = () => {
                                     <div className="breadcrumb__links">
                                         <Breadcrumb key="Breadcrumb"><>
                                             {breadcrumbs.map((crumb, i) => {
-                                                return <>
-                                                    {(i === breadcrumbs.length - 1 || breadcrumbs[i].href === '/home')
-                                                        ? <Breadcrumb.Item active key={"breadcrumb-" + i} >{crumb.title}</Breadcrumb.Item>
-                                                        : <Breadcrumb.Item href={crumb.href} key={"breadcrumb-" + i}>{crumb.title}</Breadcrumb.Item>
-                                                    }
-                                                </>
+                                                return (
+                                                    (i === breadcrumbs.length - 1 || breadcrumbs[i].href === '/home')
+                                                    ? <Breadcrumb.Item active key={"breadcrumb-" + i} >{crumb.title}</Breadcrumb.Item>
+                                                    : <Breadcrumb.Item href={crumb.href} key={"breadcrumb-" + i}>{crumb.title}</Breadcrumb.Item>
+
+                                                )
+                                                
                                             })}</>
                                         </Breadcrumb>
                                     </div>

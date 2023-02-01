@@ -8,12 +8,9 @@ const nextConfig = {
     return process.env.NODE_ENV === "development" ?
      [
       {
-        source: '/products',
-        destination: `${process.env.SERVER_SERVICE_BASE_URL}/products`,
-      },
-      {
         source: '/auth/login',
         destination: `${process.env.SERVER_SERVICE_BASE_URL}/auth/login`,
+        has: [{ type: 'header', key: 'overrideMe' }],
       },
       {
         source: '/auth/users',

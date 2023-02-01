@@ -1,11 +1,12 @@
 import { InputFieldProps } from '@/models'
 import React from 'react'
+import { Form } from 'react-bootstrap';
 import { useController } from 'react-hook-form'
 
-export const InputField: React.FC<InputFieldProps> = ({ 
+export const InputField: React.FC<InputFieldProps> = ({
     name, label, control,
     onChange: externalOnChange,
-    onBlur:externalOnBlur,
+    onBlur: externalOnBlur,
     value: externalValue,
     ref: externalRef,
     ...rest }) => {
@@ -18,8 +19,8 @@ export const InputField: React.FC<InputFieldProps> = ({
         control,
     });
 
-    return (
-        <div className="form-group">
+    return (<>
+        {/* <div className="form-group">
             <label>{name}</label>
             <input
                 className="form-control"
@@ -31,9 +32,18 @@ export const InputField: React.FC<InputFieldProps> = ({
                 {...rest}
                 
             />
-            {/* <small id="emailHelp" className="text-danger form-text">
+            <small id="emailHelp" className="text-danger form-text">
                 emailError
-            </small> */}
-        </div>
+            </small> 
+        </div> */}
+
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label>{name}</Form.Label>
+            <Form.Control  {...rest} placeholder="Enter email" />
+            {/* <Form.Text className="text-muted">
+                We'll never share your email with anyone else.
+            </Form.Text> */}
+        </Form.Group>
+    </>
     )
 }

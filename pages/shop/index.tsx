@@ -10,10 +10,11 @@ import Pagination from '@/components/common/pagination';
 import { InferGetStaticPropsType } from 'next';
 import { paginate } from '@/utilities/helper-functions';
 import { NUMOFITEMPERPAGE } from '@/constants/product.constant';
+import { cookies } from 'next/headers';
 
 const Shop = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
-
-    if (data?.totalItems === 0) return <><p>There is not product</p></>
+    
+    if (data?.totalItems === 0 || data === undefined) return <><p>There is not product</p></>
     return (
         <>
             <div>
@@ -21,6 +22,7 @@ const Shop = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
                 <p>
                     <Link href="/shop/shopping-cart">Shopping cart</Link>
                 </p>
+
                 <ProductList listProps={data} />
             </div>
         </>
@@ -50,7 +52,12 @@ Shop.getLayout = function getLayout(page: ReactElement) {
 
 
 export async function getStaticProps() {
-    const response = await fetchProduct(`limit=2`)
+    const response = await fetchProduct({
+        urlparams: `limit=200`,
+        headers: {
+            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsInVzZXJuYW1lIjoia21pbmNoZWxsZSIsImVtYWlsIjoia21pbmNoZWxsZUBxcS5jb20iLCJmaXJzdE5hbWUiOiJKZWFubmUiLCJsYXN0TmFtZSI6IkhhbHZvcnNvbiIsImdlbmRlciI6ImZlbWFsZSIsImltYWdlIjoiaHR0cHM6Ly9yb2JvaGFzaC5vcmcvYXV0cXVpYXV0LnBuZyIsImlhdCI6MTY3NTIzODM2NiwiZXhwIjoxNjc1MjQxOTY2fQ.iApMNjQF_6dGIqk3pPuMTdfFScs9Oz5bM01tigu25oM'
+        }
+    })
     if (response.data === undefined) return {
         props: { products: [] }
     };

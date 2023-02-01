@@ -2,24 +2,24 @@ import { LoginForm } from '@/components/auth'
 import { Layout } from '@/components/common/layout'
 import { REQUEST_METHOD } from '@/constants/methodRequest.constant'
 import { LoginPayload } from '@/models'
-import { request } from '@/utilities/axiosUtils'
 import Head from 'next/head'
-import React from 'react'
 
 const Signin = () => {
-    
+
+  
     const setPassword = () => { }
-    const loginSubmit = (payload: LoginPayload) => { 
+
+    const loginSubmit = (payload: LoginPayload) => {
         const res = fetch('/api/login', {
             method: REQUEST_METHOD.POST,
             headers: { 'Content-Type': 'application/json' },
-            body:  JSON.stringify(payload)
-          })
-       res.then((result)=> {
-        console.log(result.status)
-        console.log(result.statusText)
-        console.log(result)
-       })
+            body: JSON.stringify(payload)
+        })
+        res.then((result) => {
+            console.log(result.status)
+            console.log(result.statusText)
+            console.log(result)
+        })
     }
     const setEmail = () => { }
     return (
@@ -39,7 +39,6 @@ const Signin = () => {
                             </div>
                         </div>
                     </section>
-
 
                 </main>
             </Layout>

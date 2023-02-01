@@ -3,6 +3,7 @@ import { REQUEST_METHOD } from '@/constants/methodRequest.constant';
 import { login } from '@/services/user-service';
 import { setCookie } from '@/utilities/cookies';
 import { NextApiRequest, NextApiResponse } from 'next';
+import { cookies } from 'next/headers';
 
 type Data = {
   message: string
@@ -16,19 +17,16 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
 
   try {
     const response = await login(req.body)
-    if (response?.data) {
-      setCookie(res, 'token', response?.data.token, {
-        httpOnly: true,
-        secure: process.env.NODE_ENV !== "development" 
-      })
-      // Return the `set-cookie` header so we can display it in the browser and show that it works!
-      //res.end(res.getHeader('Set-Cookie'))
-      return res.status(200).json({ message: `You are successfully logged in` })
-    }
-    return res.status(500).json({ message: 'You are failed logged in' })
+
+    setCookie(res, 'token', response?.data.token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV !== "development"
+    })
+
+    return res.status(200).json({ message: `You are successfully logged in` })
 
   } catch (error) {
-    return res.status(500).json({ message: "Error!!!" })
+    return res.status(500).json({ message: error.message })
   }
 
 };
